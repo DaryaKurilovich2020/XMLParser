@@ -50,12 +50,19 @@ public class Node {
         return this.content != null;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder attributesToString= new StringBuilder();
+    public boolean hasAttributes() {
+        return !this.attributes.isEmpty();
+    }
+
+    public String print() {
+        StringBuilder attributesToString = new StringBuilder();
         for (Attribute attribute : attributes) {
-            attributesToString.append(attribute.toString());
+            attributesToString.append(attribute.toString() + " ");
         }
-        return name + " "+content+"\n" + attributesToString.toString();
+        if (content != null) {
+            return name + " " + content + " " + attributesToString.toString();
+        } else {
+            return name + " " + attributesToString.toString();
+        }
     }
 }

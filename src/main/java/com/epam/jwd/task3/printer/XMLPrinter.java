@@ -5,12 +5,11 @@ import com.epam.jwd.task3.parser.XMLParser;
 
 import java.io.IOException;
 import java.util.ArrayDeque;
-import java.util.PriorityQueue;
 import java.util.Queue;
 
 public class XMLPrinter implements Printer {
     private XMLParser parser;
-    private Queue<Node> nodes=new ArrayDeque<>();
+    Queue<Node> nodes = new ArrayDeque<>();
 
     public XMLPrinter(XMLParser parser) {
         this.parser = parser;
@@ -19,21 +18,21 @@ public class XMLPrinter implements Printer {
     @Override
     public void print() throws IOException {
         parser.parse();
-        dfs(parser.getTree().getRoot());
-        System.out.println(parser.getTree().getRoot());
+        treeTraversal(parser.getTree().getRoot());
+        System.out.println(parser.getTree().getRoot().print());
         for (Node node : nodes) {
-            if (node.hasContent()) {
-                System.out.println(node.toString());
+            if (node.hasContent() || node.hasAttributes()) {
+                System.out.println(node.print());
             }
         }
     }
 
-    private void dfs(Node node) {
+    private void treeTraversal(Node node) {
         if (!node.getChildNodes().isEmpty()) {
-            nodes.addAll(node.getChildNodes());
-        }
-        for (Node childNode : node.getChildNodes()) {
-            dfs(childNode);
+            for (Node childNode : node.getChildNodes()) {
+                nodes.add(childNode);
+                treeTraversal(childNode);
+            }
         }
     }
 }

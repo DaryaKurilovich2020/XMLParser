@@ -7,8 +7,8 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        XMLParser xmlParser=new XMLParser("input.txt");
-        XMLPrinter printer=new XMLPrinter(xmlParser);
+        XMLParser xmlParser = new XMLParser("input.txt");
+        XMLPrinter printer = new XMLPrinter(xmlParser);
         printer.print();
     }
 }
