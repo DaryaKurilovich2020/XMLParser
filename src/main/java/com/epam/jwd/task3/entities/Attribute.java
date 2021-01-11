@@ -1,6 +1,8 @@
 package com.epam.jwd.task3.entities;
 
-public class Attribute {
+import java.io.Serializable;
+
+public class Attribute implements Serializable {
     private String key;
     private Object value;
 

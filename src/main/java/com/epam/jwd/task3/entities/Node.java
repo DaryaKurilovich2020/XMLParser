@@ -1,9 +1,10 @@
 package com.epam.jwd.task3.entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Node {
+public class Node implements Serializable {
     private Node father;
     private String name;
     private List<Attribute> attributes = new ArrayList<>();
@@ -52,17 +53,5 @@ public class Node {
 
     public boolean hasAttributes() {
         return !this.attributes.isEmpty();
-    }
-
-    public String print() {
-        StringBuilder attributesToString = new StringBuilder();
-        for (Attribute attribute : attributes) {
-            attributesToString.append(attribute.toString() + " ");
-        }
-        if (content != null) {
-            return name + " " + content + " " + attributesToString.toString();
-        } else {
-            return name + " " + attributesToString.toString();
-        }
     }
 }

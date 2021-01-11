@@ -1,14 +1,16 @@
 package com.epam.jwd.task3.entities;
 
-public class Tree {
+import java.io.Serializable;
+
+public class Tree implements Serializable {
     private Node root;
     private Node currentFather;
 
-    public Node getRoot() {
-        return root;
+    public Tree() {
     }
 
-    public Tree() {
+    public Node getRoot() {
+        return root;
     }
 
     public void insert(Node node) {
@@ -29,11 +31,4 @@ public class Tree {
         this.currentFather = currentFather;
     }
 
-
-    public void print(Node root) {
-        for (Node childNode : root.getChildNodes()) {
-
-
-        }
-    }
 }

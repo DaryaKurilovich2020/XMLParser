@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
-public class XMLParser implements XMLParsing{
+public class XMLParser implements Parser{
     private List<String> tokens = new ArrayList<>();
     private final String filepath;
     private Tree tree=new Tree();
@@ -82,9 +82,9 @@ public class XMLParser implements XMLParsing{
         tree.getCurrentFather().setContent(token);
     }
     private void handleAttribute(int i){
-        StringTokenizer tokenizer = new StringTokenizer(tokens.get(i)," =");
+        StringTokenizer tokenizer = new StringTokenizer(tokens.get(i)," =/");
         Node newNode = new Node(tokenizer.nextToken());
-        while (tokenizer.hasMoreTokens()) {
+        while (tokenizer.countTokens()>1) {
             Attribute attribute = new Attribute(tokenizer.nextToken(), tokenizer.nextToken());
             newNode.addAttribute(attribute);
         }
