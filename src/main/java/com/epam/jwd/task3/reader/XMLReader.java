@@ -14,14 +14,14 @@ public class XMLReader implements Reader {
 
     public List<String> read() throws IOException {
         List<String> tokens = new ArrayList<>();
-        BufferedReader bufferedReader = new BufferedReader(new FileReader(new File(filepath)));
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(filepath));
         String line;
         StringTokenizer stringTokenizer;
         while ((line = bufferedReader.readLine()) != null) {
             stringTokenizer = new StringTokenizer(line, "<>", true);
             while (stringTokenizer.hasMoreTokens()) {
-                String token=stringTokenizer.nextToken();
-                if(!token.isBlank()) {
+                String token = stringTokenizer.nextToken();
+                if (!token.isBlank()) {
                     token.trim();
                     tokens.add(token);
                 }

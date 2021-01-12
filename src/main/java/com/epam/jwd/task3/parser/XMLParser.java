@@ -10,10 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
-public class XMLParser implements Parser{
+public class XMLParser implements Parser {
     private List<String> tokens = new ArrayList<>();
     private final String filepath;
-    private Tree tree=new Tree();
+    private Tree tree = new Tree();
     private static final String OPENING_BRACKET = "<";
     private static final char CLOSING_TAG_IDENTIFIER = '/';
     private static final char COMMENT_IDENTIFIER = '!';
@@ -44,7 +44,7 @@ public class XMLParser implements Parser{
                         break;
                     default:
                         handleElement(i);
-                        i+=2;
+                        i += 2;
                         break;
                 }
             } else {
@@ -69,8 +69,8 @@ public class XMLParser implements Parser{
     }
 
     private void handleElement(int i) {
-        if (contentsAttribute(tokens.get(i+1))) {
-            handleAttribute(i+1);
+        if (contentsAttribute(tokens.get(i + 1))) {
+            handleAttribute(i + 1);
         } else {
             Node newNode = new Node(tokens.get(i + 1));
             tree.insert(newNode);
@@ -81,10 +81,11 @@ public class XMLParser implements Parser{
     private void handleContent(String token) {
         tree.getCurrentFather().setContent(token);
     }
-    private void handleAttribute(int i){
-        StringTokenizer tokenizer = new StringTokenizer(tokens.get(i)," =/");
+
+    private void handleAttribute(int i) {
+        StringTokenizer tokenizer = new StringTokenizer(tokens.get(i), " =/");
         Node newNode = new Node(tokenizer.nextToken());
-        while (tokenizer.countTokens()>1) {
+        while (tokenizer.countTokens() > 1) {
             Attribute attribute = new Attribute(tokenizer.nextToken(), tokenizer.nextToken());
             newNode.addAttribute(attribute);
         }

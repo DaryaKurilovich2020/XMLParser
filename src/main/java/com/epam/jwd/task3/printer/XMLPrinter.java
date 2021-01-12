@@ -36,7 +36,8 @@ public class XMLPrinter implements Printer {
             }
         }
     }
-    private String printNode(Node node){
+
+    private String printNode(Node node) {
         StringBuilder attributesToString = new StringBuilder();
         for (Attribute attribute : node.getAttributes()) {
             attributesToString.append(attribute.toString()).append(" ");
