@@ -3,6 +3,7 @@ package com.epam.jwd.task3.entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Node implements Serializable {
     private Node father;
